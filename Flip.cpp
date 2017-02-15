@@ -1,5 +1,5 @@
 // only function
-int* flip(char* A, int *len1) {
+int* flip(char* A) {
   int i=0,j,k,c=0,c1=0,n=0,no_of_one=0,l=-1,r,l1=0,r1=0;
  n=strlen(A);
  for(i=0;i<n;i++)
