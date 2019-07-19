@@ -20,7 +20,7 @@ vector<Interval> Solution::merge(vector<Interval> &A) {
             s.end=A[i].end;
         }
         else if(A[i].end>s.end)
-            s.end=A[i].end;
+            s.end=max(A[i].end,s.end);
         i++;
         
     }
