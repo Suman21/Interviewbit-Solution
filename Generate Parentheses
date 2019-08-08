@@ -1,0 +1,29 @@
+class Solution {
+    public void fun(List<String> ans,int st,int e,int n,String s)
+    {
+        if(e>=n)
+        {
+            ans.add(s);
+            return;
+        }
+        if(st<n)
+        {
+            s+="(";
+            this.fun(ans,st+1,e,n,s);
+            s=s.substring(0, s.length() - 1);
+            
+        }
+        if(e<st)
+        {
+            s+=")";
+            this.fun(ans,st,e+1,n,s);
+            s=s.substring(0, s.length() - 1);
+        }
+    }
+    public List<String> generateParenthesis(int n) {
+        List<String> ans=new ArrayList<String>();
+        String s="";
+        this.fun(ans,0,0,n,"");
+        return ans;
+    }
+}
