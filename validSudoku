@@ -1,0 +1,63 @@
+class Solution {
+    public boolean rowCheck(char [][]board,int row,int col)
+    {
+        Set<Integer> set=new HashSet<Integer>();
+        for(int i=0;i<9;i++)
+        {
+            if(board[row][i]=='.')
+                continue;
+            int temp=board[row][i]-'0';
+            if(set.contains(temp))
+                return false;
+            set.add(temp);
+        }
+        return true;
+    }
+    public boolean colCheck(char [][]board,int row,int col)
+    {
+        Set<Integer> set=new HashSet<Integer>();
+        for(int i=0;i<9;i++)
+        {
+            if(board[i][col]=='.')
+                continue;
+            int temp=board[i][col]-'0';
+            if(set.contains(temp))
+                return false;
+            set.add(temp);
+        }
+        return true;
+    }
+    public boolean boxCheck(char [][]board,int row,int col)
+    {
+        Set<Integer> set=new HashSet<Integer>();
+        for(int i=row;i<row+3;i++)
+        {
+            for(int j=col;j<col+3;j++)
+            {
+                if(board[i][j]=='.')
+                    continue;
+                int temp=board[i][j]-'0';
+                if(set.contains(temp))
+                return false;
+                set.add(temp);
+            }
+        }
+        return true;
+    }
+    
+    public boolean isValid(char [][]board,int row,int col)
+    {
+        return rowCheck(board,row,col) & colCheck(board,row,col) & boxCheck(board,row-row%3,col-col%3);
+    }
+    public boolean isValidSudoku(char[][] board) {
+        for(int i=0;i<9;i++)
+        {
+            for(int j=0;j<9;j++)
+            {
+                if(!isValid(board,i,j))
+                    return false;
+            }
+        }
+        return true;
+    }
+}
